@@ -9,6 +9,9 @@ function change_camra () {
         camra = 1
     }
 }
+controller.B.onEvent(ControllerButtonEvent.Released, function () {
+    change_camra()
+})
 function move () {
     if (controller.player1.isPressed(ControllerButton.Right)) {
         player_1.x += 2.5
@@ -105,9 +108,6 @@ scene.cameraFollowSprite(player_1)
 game.onUpdate(function () {
     move()
     update_camra()
-    if (controller.menu.isPressed()) {
-        change_camra()
-    }
     if (controller.A.isPressed()) {
         player_1.sayText(camra)
     }
