@@ -2,7 +2,9 @@
     "name": "rpg try 2",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "controller": "*",
+        "multiplayer": "*"
     },
     "files": [
         "main.blocks",

@@ -1,6 +1,3 @@
-controller.player4.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Pressed, function () {
-    player_camra = sprites.create(assets.image`myImage2`, SpriteKind.Player)
-})
 function change_camra () {
     if (camra == 1) {
         camra = 2
@@ -12,35 +9,7 @@ function change_camra () {
         camra = 1
     }
 }
-controller.player4.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
-    player_camra = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-})
-controller.player1.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Pressed, function () {
-    player_1.sayText(camra, 1000, false)
-    change_camra()
-    player_1.sayText(camra, 1000, false)
-})
 function move () {
-    if (controller.player1.isPressed(ControllerButton.B)) {
-        change_camra()
-    }
     if (controller.player1.isPressed(ControllerButton.Right)) {
         player_1.x += 2.5
     }
@@ -136,4 +105,10 @@ scene.cameraFollowSprite(player_1)
 game.onUpdate(function () {
     move()
     update_camra()
+    if (controller.menu.isPressed()) {
+        change_camra()
+    }
+    if (controller.A.isPressed()) {
+        player_1.sayText(camra)
+    }
 })
